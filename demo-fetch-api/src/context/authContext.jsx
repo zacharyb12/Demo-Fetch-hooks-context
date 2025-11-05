@@ -1,8 +1,8 @@
-import { createContext,useContext,useState } from "react";
+import { createContext,useState } from "react";
 import { authService } from "../services/authService";
 
 // Creation du contexte d'authentification
-const AuthContext = createContext();
+export const AuthContext = createContext();
 
 // fournisseur du contexte
 export const AuthProvider = ({children}) => {
@@ -35,8 +35,3 @@ export const AuthProvider = ({children}) => {
 
 
 };
-
-export const useAuth = () => {
-    return useContext(AuthContext);
-};
-

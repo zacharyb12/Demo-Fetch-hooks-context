@@ -28,10 +28,10 @@ function App() {
             <Route path="login" element= {<LoginPage />} />
 
         {/* utilisation du fetch */}
-            <Route path="episodes-fetch" element= {<EpisodeUseFetch />} />
+            {/* <Route path="episodes-fetch" element= {<EpisodeUseFetch />} /> */}
 
             {/*Route avec accès privé*/}
-            <Route path="private" element= {
+            <Route path="episodes-fetch" element= {
                                             <PrivateRoute>
                                                 <EpisodeUseFetch />
                                             </PrivateRoute>

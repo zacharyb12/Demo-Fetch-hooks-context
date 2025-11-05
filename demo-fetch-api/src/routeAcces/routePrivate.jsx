@@ -1,4 +1,4 @@
-import { useAuth } from "../context/authContext";
+import { useAuth } from "../hooks/hooks-useAuth";
 import { useNavigate } from "react-router-dom";
 
 export default function PrivateRoute({children}){
@@ -6,8 +6,9 @@ export default function PrivateRoute({children}){
     const {user} = useAuth();
 
     if(!user){
-        navigate('/homepage');
+        navigate('/');
     }
-
-    return children;
+    else{   
+        return children;
+    }
 }
