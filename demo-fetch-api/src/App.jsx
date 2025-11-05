@@ -5,29 +5,42 @@ import CharacterPage from './pages/character';
 import EpisodesPage from './pages/episodes';
 import CharacterDetailsPage from './pages/characterDetails';
 import EpisodeUseFetch from './pages/episodeUseFetch';
-import  ThemeContext  from './context/themeContext';
-import { useContext } from 'react';
+import { AuthProvider } from './context/authContext';
+import PrivateRoute from './routeAcces/routePrivate';
+import LoginPage from './pages/login';
 
 function App() {
- const {theme} = useContext(ThemeContext)
+
 
   return (
-<Router>
 
-  <div style={{backgroundColor : theme.backgroundColor , color: theme.color}}>
-    <Navbar />
-    <Routes>
-      <Route path="" element= {<Homepage />} />
-      <Route path="character" element= {<CharacterPage />} />
-      <Route path="episodes" element= {<EpisodesPage />} />
-      <Route path="characterDetails/:id" element={<CharacterDetailsPage />} />
 
-  {/* utilisation du fetch */}
-      <Route path="episodes-fetch" element= {<EpisodeUseFetch />} />
-    </Routes> 
-  </div>
+    <AuthProvider>
+      <Router>
 
-</Router>
+        <div>
+          <Navbar />
+          <Routes>
+            <Route path="" element= {<Homepage />} />
+            <Route path="character" element= {<CharacterPage />} />
+            <Route path="episodes" element= {<EpisodesPage />} />
+            <Route path="characterDetails/:id" element={<CharacterDetailsPage />} />
+            <Route path="login" element= {<LoginPage />} />
+
+        {/* utilisation du fetch */}
+            <Route path="episodes-fetch" element= {<EpisodeUseFetch />} />
+
+            {/*Route avec accès privé*/}
+            <Route path="private" element= {
+                                            <PrivateRoute>
+                                                <EpisodeUseFetch />
+                                            </PrivateRoute>
+                                          }/>
+          </Routes> 
+        </div>
+
+      </Router>
+    </AuthProvider>
   )
 }
 

@@ -6,6 +6,7 @@ function Navbar(){
         <nav>
             <ul>
                 <li> <Link to="/">Home</Link></li>
+                <li> <Link to="login">Login</Link></li>
                 <li> <Link to="character">Personnages</Link></li>
                 <li> <Link to="episodes">Episodes</Link></li>
                 <li> <Link to="characterDetails">Détails Personnage</Link></li>
